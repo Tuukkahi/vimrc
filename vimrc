@@ -8,6 +8,9 @@ Plug 'KeitaNakamura/tex-conceal.vim'
 Plug 'sirver/ultisnips'
 
 Plug 'honza/vim-snippets'
+
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 call plug#end()
 
 filetype plugin indent on
