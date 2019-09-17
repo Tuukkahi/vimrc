@@ -11,6 +11,9 @@ Plug 'honza/vim-snippets'
 
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'derekwyatt/vim-scala'
+
+Plug 'bfrg/vim-cpp-modern'
 call plug#end()
 
 filetype plugin indent on
@@ -22,6 +25,8 @@ set number
 set showmatch
 set cursorline
 set hls
+
+au BufRead,BufNewFile *.sbt set filetype=scala
 
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
