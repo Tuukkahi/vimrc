@@ -13,6 +13,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'derekwyatt/vim-scala'
 
+Plug 'https://github.com/w0rp/ale.git'
+
 Plug 'bfrg/vim-cpp-modern'
 call plug#end()
 
@@ -47,3 +49,7 @@ set conceallevel=2
 let g:tex_conceal="abdgm" 
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
+"ale
+nnoremap <Leader>l :ALEToggle<CR>
+nnoremap <Leader>L :ALEFix<space>
