@@ -9,13 +9,14 @@ Plug 'KeitaNakamura/tex-conceal.vim'
 
 Plug 'honza/vim-snippets'
 
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
+"Highlighters
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'derekwyatt/vim-scala'
+Plug 'bfrg/vim-cpp-modern'
 
 Plug 'https://github.com/w0rp/ale.git'
 
-Plug 'bfrg/vim-cpp-modern'
 
 Plug 'luochen1990/rainbow'
 call plug#end()
