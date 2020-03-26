@@ -1,9 +1,8 @@
 call plug#begin('~/.vim/plugged')
 Plug 'jacoborus/tender.vim'
-Plug 'crusoexia/vim-monokai'
 
 Plug 'lervag/vimtex'
-Plug 'KeitaNakamura/tex-conceal.vim'
+Plug   'KeitaNakamura/tex-conceal.vim', {'for': 'tex'} 
 
 "Plug 'sirver/ultisnips'
 
@@ -35,7 +34,7 @@ set showmatch
 set cursorline
 set hls
 set ruler
-
+set backspace=2
 set shiftwidth=4
 set tabstop=2
 set softtabstop=2
@@ -55,12 +54,12 @@ endif
 
 
 "for LaTeX
-autocmd FileType tex nmap <buffer> <C-T> :!xelatex %<CR>
+autocmd FileType tex nmap <buffer> <C-T> :!pdflatex %<CR>
 autocmd FileType tex nmap <buffer> T :!zathura %:r.pdf<CR><CR>
-let g:vimtex_view_method='zathura'
+"let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
-let g:tex_conceal="abdgm" 
-set conceallevel=2
+"set conceallevel=2
+"let g:tex_conceal="abggm" 
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 " put \begin{} \end{} tags tags around the current word
