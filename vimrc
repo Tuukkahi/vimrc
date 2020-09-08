@@ -58,6 +58,7 @@ autocmd FileType tex nmap <buffer> <C-T> :!pdflatex %<CR>
 autocmd FileType tex nmap <buffer> T :!zathura %:r.pdf<CR><CR>
 "let g:vimtex_view_method='zathura'
 let g:vimtex_quickfix_mode=0
+let g:vimtex_latexmk_enabled = 1
 "set conceallevel=2
 "let g:tex_conceal="abggm" 
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
