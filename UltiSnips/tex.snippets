@@ -1,0 +1,92 @@
+global !p
+texMathZones = ['texMathZone' + x for x in ['A', 'AS', 'B', 'BS', 'C', 'CS', 'D', 'DS', 'E', 'ES', 'F', 'FS', 'G', 'GS', 'H', 'HS', 'I', 'IS', 'J', 'JS', 'K', 'KS', 'L', 'LS', 'DS', 'V', 'W', 'X', 'Y', 'Z', 'AmsA', 'AmsB', 'AmsC', 'AmsD', 'AmsE', 'AmsF', 'AmsG', 'AmsAS', 'AmsBS', 'AmsCS', 'AmsDS', 'AmsES', 'AmsFS', 'AmsGS' ]]
+texIgnoreMathZones = ['texMathText']
+texMathZoneIds = vim.eval('map('+str(texMathZones)+", 'hlID(v:val)')")
+texIgnoreMathZoneIds = vim.eval('map('+str(texIgnoreMathZones)+", 'hlID(v:val)')")
+ignore = texIgnoreMathZoneIds[0]
+def math():
+	synstackids = vim.eval("synstack(line('.'), col('.') - (col('.')>=2 ? 1 : 0))")
+	try:
+		first = next(i for i in reversed(synstackids) if i in texIgnoreMathZoneIds or i in texMathZoneIds)
+		return first != ignore
+	except StopIteration:
+		return False
+endglobal
+
+
+snippet templatef "Basic template" b
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[finnish]{babel}
+\usepackage{amsmath, amssymb}
+
+
+\begin{document}
+	$0
+\end{document}
+endsnippet
+snippet template "Basic template" b
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[UKenglish]{babel}
+\usepackage{amsmath, amssymb}
+
+
+\begin{document}
+	$0
+\end{document}
+endsnippet
+
+snippet beg "begin{} / end{}" bA
+\\begin{$1}
+	$0
+\\end{$1}
+endsnippet
+
+priority 100
+snippet ... "ldots" iA
+\dots
+endsnippet
+
+snippet enum "Enumerate" bA
+\begin{enumerate}
+	\item $0
+\end{enumerate}
+endsnippet
+
+snippet dmat "Math" wA
+\[
+${1:${VISUAL}}
+\] $0
+endsnippet
+
+snippet malig "Align" bA
+\begin{align*}
+	${1:${VISUAL}}
+\end{align*}
+endsnippet
+
+
+context "math()"
+snippet frac "Fraction" iA
+\\frac{$1}{$2}$0
+endsnippet
+
+context "math()"
+snippet iff "Leftrightarrow" b
+\Leftrightarrow$0
+endsnippet
+
+context "math()"
+snippet dint "integral" wA
+\int_{${1:-\infty}}^{${2:\infty}} ${3:${VISUAL}} $0
+endsnippet
+
+context "math()"
+snippet sum "sum" w
+\sum_{n=${1:1}}^{${2:\infty}} $0
+endsnippet
+
+# vim:ft=snippets
