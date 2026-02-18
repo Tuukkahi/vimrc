@@ -102,7 +102,6 @@ let g:UltiSnipsExpandTrigger='<c-j>'
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-let mapleader=","
 "ale
 nnoremap <Leader>l :ALEToggle<CR>
 nnoremap <Leader>L :ALEFix<space>
