@@ -1,3 +1,8 @@
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 call plug#begin('~/.vim/plugged')
 Plug 'jacoborus/tender.vim'
 
@@ -63,6 +68,7 @@ cnoreabbrev w!! w !sudo tee > /dev/null %|      "forgot sudo...
 au BufRead,BufNewFile *.sbt set filetype=scala
 let g:scala_scaladoc_indent = 1
 
+" open file where I left it
 if has("autocmd")
     au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
                 \| exe "normal! g'\"" | endif
@@ -72,6 +78,9 @@ if has("autocmd")
     filetype plugin indent on
 endif
 
+" highlight trailing whitespace
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
 
 "for LaTeX
 autocmd FileType tex nmap <buffer> <C-T> :!pdflatex %<CR>
