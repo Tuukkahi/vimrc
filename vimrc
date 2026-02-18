@@ -82,6 +82,9 @@ endif
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 
+" remove trailing whitespace for code files
+autocmd BufWritePre * if &filetype !~# 'markdown\|diff\|gitcommit\|text' | %s/\s\+$//e | endif
+
 "for LaTeX
 autocmd FileType tex nmap <buffer> <C-T> :!pdflatex %<CR>
 autocmd FileType tex nmap <buffer> T :!zathura %:r.pdf<CR><CR>
